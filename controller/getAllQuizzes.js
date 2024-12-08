@@ -1,6 +1,6 @@
 const Quiz = require('../models/Quiz'); 
 
-async function getAllQuizzez(req,res){
+const getAllQuizzes = async (req, res) => {
     try {
     const quizzes = await Quiz.find();
     res.json(quizzes);
@@ -8,3 +8,4 @@ async function getAllQuizzez(req,res){
     res.status(500).json({ error: error.message });
   }
 }
+module.exports = getAllQuizzes;

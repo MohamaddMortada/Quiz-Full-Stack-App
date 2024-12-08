@@ -1,6 +1,6 @@
 const Quiz = require('../models/Quiz'); 
 
-async function getQuiz(params) {
+const getQuiz = async (req, res) => {
     try {
       const quiz = await Quiz.findById(req.params.id);
       if (!quiz) return res.status(404).json({ message: 'Quiz not found' });
@@ -9,3 +9,4 @@ async function getQuiz(params) {
       res.status(500).json({ error: error.message });
     }
   }
+  module.exports = getQuiz;
