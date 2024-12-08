@@ -1,4 +1,4 @@
-const Quiz = require('../models/Quiz'); 
+const Quiz = require('../../models/Quiz'); 
 
 const deleteQuestion = async (req, res) => {
     const { quizId, questionId } = req.params;
