@@ -6,8 +6,10 @@ const getQuiz = require('../controller/getQuiz');
 const getAllQuizzes = require('../controller/getAllQuizzes');
 const addQuestion = require('../controller/addQuestion');
 const addQuestion = require('../controller/deleteQuestion');
+const { registerUser, loginUser } = require('../controller/authController');
 
-
+router.post('/register', registerUser);
+router.post('/login', loginUser);
 
 router.post('/quizzes', verifyToken, createQuiz);
 router.get('/quizzes', verifyToken, getAllQuizzes);

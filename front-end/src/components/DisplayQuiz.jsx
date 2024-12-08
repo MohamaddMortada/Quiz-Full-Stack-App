@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../App.css';
 
 const DisplayQuiz = ({ quiz, setQuiz, score, setScore}) => {
-
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8000/api/quizzes/${quiz._id}`)
+      .then(response => setQuestions(response.data.questions))
+      .catch(error => console.error('Error fetching quiz:', error));
+  }, [quiz]);
   const handleAnswer = (answer) => {
 
     const question = quiz.questions[currentQuestionIndex];
@@ -13,7 +20,7 @@ const DisplayQuiz = ({ quiz, setQuiz, score, setScore}) => {
       setScore((prev) => prev + 10);
     }
 
-    if (currentQuestionIndex + 1 < quiz.questions.length) {
+    if (currentQuestionIndex + 1 < questions.length) {
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
       setQuizCompleted(true);
