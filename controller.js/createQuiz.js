@@ -1,4 +1,6 @@
-async function createQuiz(){
+const Quiz = require('../models/Quiz'); 
+
+async function createQuiz(req,res){
     const { title, questions } = req.body;
   try {
     const quiz = new Quiz({ title, questions });

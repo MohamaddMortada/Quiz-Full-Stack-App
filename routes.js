@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const verifyToken = require('./jwtAuth');
 
-router.post('/quizzes', verifyToken, async (req, res) => {createQuiz});
+router.post('/quizzes', verifyToken, createQuiz);
+router.get('/quizzes', verifyToken, getAllQuizzez);
 
 module.exports = router;
