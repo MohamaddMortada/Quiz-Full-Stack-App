@@ -6,7 +6,11 @@ const SelectedQuiz = ({ setQuiz }) => {
   const [quizzes, setQuizzes] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/quizzes')
+    axios.get('http://localhost:8000/api/quizzes',{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then(response => setQuizzes(response.data))
       .catch(error => console.error('Error fetching quizzes:', error));
   }, []);

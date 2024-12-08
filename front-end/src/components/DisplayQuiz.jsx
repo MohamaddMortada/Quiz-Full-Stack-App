@@ -9,7 +9,11 @@ const DisplayQuiz = ({ quiz, setQuiz, score, setScore}) => {
   const [quizCompleted, setQuizCompleted] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/quizzes/${quiz._id}`)
+    axios.get(`http://localhost:8000/api/quizzes/${quiz._id}`,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then(response => setQuestions(response.data.questions))
       .catch(error => console.error('Error fetching quiz:', error));
   }, [quiz]);

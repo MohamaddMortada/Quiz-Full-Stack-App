@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SelectedQuiz from './components/SelectedQuiz';
 import DisplayQuiz from './components/DisplayQuiz';
 import LogIn from './components/LogIn';
@@ -8,6 +9,7 @@ import Data from './data/data';
 const App = () => {
   const [Quiz, setQuiz] = useState(null);
   const [score, setScore] = useState(0);
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
   return (
     <Router>
