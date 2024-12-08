@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../App.css';
+import jwtDecode from 'jwt-decode';
 
 const DisplayQuiz = ({ quiz, setQuiz, score, setScore}) => {
   const [questions, setQuestions] = useState([]);
