@@ -12,5 +12,7 @@ router.get('/quizzes', verifyToken, getAllQuizzes);
 router.get('/quizzes/:id', verifyToken, getQuiz);
 
 router.post('/quizzes/:id/questions', addQuestion);
+router.delete('/quizzes/:id/questions/:questionId', deleteQuestion);
+
 
 module.exports = router;
